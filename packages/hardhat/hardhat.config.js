@@ -11,6 +11,7 @@ require("hardhat-gas-reporter");
 
 require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-etherscan");
+const { API_URL, MTMSK_PRIVATE_KEY } = process.env;
 
 const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 
@@ -26,7 +27,7 @@ const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 //
 // Select the network you want to deploy to here:
 //
-const defaultNetwork = "localhost";
+const defaultNetwork = "kovan";
 
 const mainnetGwei = 21;
 
@@ -225,6 +226,12 @@ module.exports = {
       url: "https://api.harmony.one",
       gasPrice: 1000000000,
       chainId: 1666600000,
+      accounts: {
+        mnemonic: mnemonic(),
+      },
+    },
+    arbitrum: {
+      url: API_URL,
       accounts: {
         mnemonic: mnemonic(),
       },
